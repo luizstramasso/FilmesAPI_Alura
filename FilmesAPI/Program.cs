@@ -1,6 +1,5 @@
 using FilmesAPI.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 
 internal class Program
 {
@@ -14,7 +13,7 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        builder.Services.AddDbContext<FilmeContext>( opt => opt.UseMySQL( builder.Configuration.GetConnectionString( "FilmeConnection" ) ) );
+        builder.Services.AddDbContext<FilmeContext>( opt => opt.UseMySql( builder.Configuration.GetConnectionString( "FilmeConnection" ), new MySqlServerVersion( new Version( 8, 0 ) ) ) );
 
         var app = builder.Build();
 
