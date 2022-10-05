@@ -7,7 +7,7 @@ namespace FilmesAPI.Controllers
     [Route( "[controller]" )]
     public class FilmeController : ControllerBase
     {
-        private static List<Filme> filmes = new List<Filme>();
+        private static readonly List<Filme> filmes = new();
         private static int id = 1;
 
         [HttpPost]
@@ -16,7 +16,7 @@ namespace FilmesAPI.Controllers
             filme.Id = id++;
             filmes.Add( filme );
 
-            return CreatedAtAction( nameof( RecuperarFilmePorId ), new { Id = filme.Id }, filme );
+            return CreatedAtAction( nameof( RecuperarFilmePorId ), new { filme.Id }, filme );
         }
 
         [HttpGet]
