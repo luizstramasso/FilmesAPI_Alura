@@ -13,7 +13,6 @@ namespace FilmesAPI.Controllers
         public void AdicionarFilme( [FromBody] Filme filme )
         {
             filmes.Add( filme );
-            Console.WriteLine( filme.Titulo );
         }
     }
 }
