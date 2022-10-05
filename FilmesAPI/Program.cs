@@ -13,7 +13,9 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
         builder.Services.AddDbContext<FilmeContext>( opt => opt.UseMySql( builder.Configuration.GetConnectionString( "FilmeConnection" ), new MySqlServerVersion( new Version( 8, 0 ) ) ) );
+        builder.Services.AddAutoMapper( AppDomain.CurrentDomain.GetAssemblies() );
 
         var app = builder.Build();
 
